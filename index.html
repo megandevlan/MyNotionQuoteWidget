@@ -15,8 +15,8 @@
       background-color: #f4f4f4;
     }
     .quote-box {
-      background-color: #f4c6db;
-      border: 2px solid #ff4164;
+      background-color: #fff;
+      border: 2px solid #ccc;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -64,15 +64,18 @@
       { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" }
     ];
 
+    // Function to display a new quote
     function newQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      const randomQuote = quotes[randomIndex];
-      document.getElementById("quote").textContent = `"${randomQuote.text}"`;
-      document.getElementById("author").textContent = `- ${randomQuote.author}`;
+      const randomIndex = Math.floor(Math.random() * quotes.length); // Get a random index from the quotes array
+      const randomQuote = quotes[randomIndex]; // Get the quote at the random index
+      document.getElementById("quote").textContent = `"${randomQuote.text}"`; // Set quote text
+      document.getElementById("author").textContent = `- ${randomQuote.author}`; // Set author text
     }
 
-    // Initialize with a random quote
-    newQuote();
+    // Initialize with a random quote when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+      newQuote(); // Call newQuote when the page is fully loaded
+    });
   </script>
 </body>
 </html>
