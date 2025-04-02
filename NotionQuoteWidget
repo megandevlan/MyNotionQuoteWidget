@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Widget</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .quote-box {
+      background-color: #f4c6db;
+      border: 2px solid #ff4164;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      font-size: 18px;
+      color: #333;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .author {
+      font-weight: bold;
+      color: #333;
+    }
+    .button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <p class="quote" id="quote">Loading quote...</p>
+    <p class="author" id="author">- Unknown</p>
+    <button class="button" onclick="newQuote()">Get New Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "The best way to predict the future is to create it.", author: "Abraham Lincoln" },
+      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+      { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" }
+      { text: "You did this because it was fun. So fuck your feelings, fuck your overthinking, fuck all that bullshit. Go back out there and have some fucking fun", author: "Roy Kent" }
+    ];
+
+    function newQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex];
+      document.getElementById("quote").textContent = `"${randomQuote.text}"`;
+      document.getElementById("author").textContent = `- ${randomQuote.author}`;
+    }
+
+    // Initialize with a random quote
+    newQuote();
+  </script>
+</body>
+</html>
