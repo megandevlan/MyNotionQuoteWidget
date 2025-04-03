@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ted Lasso Quote Widget</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444;
+        }
+        .quote-container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .quote-text {
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 14px;
+            color: #333;
+        }
+        .quote-author {
+            font-style: italic;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 14px;
+        }
+        .new-quote-btn {
+            padding: 6px 14px;
+            background-color: #D00000; /* AFC Richmond red */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
+        }
+        .new-quote-btn:hover {
+            background-color: #B00000;
+        }
+        .header {
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #003366;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div class="header">
+            <h1>Ted Lasso Wisdom</h1>
+        </div>
+        <p class="quote-text" id="quote"></p>
+        <p class="quote-author" id="author">Ted Lasso</p>
+        <button class="new-quote-btn" id="new-quote">Believe</button>
+    </div>
+
+    <script>
+        // Ted Lasso quotes
+        const quotes = [
+            {
+                text: "Be curious, not judgmental.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "I believe in believe.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "You know what the happiest animal on Earth is? It's a goldfish. You know why? Got a ten-second memory.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "For me, success is not about the wins and losses. It's about helping these young fellas be the best versions of themselves on and off the field.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "I think that's what it's all about. Embracing change.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "I do love a locker room. It smells like potential.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "There's two buttons I never like to hit: that's panic and snooze.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "You say impossible, but all I hear is 'I'm possible.'",
+                author: "Ted Lasso"
+            },
+            {
+                text: "I've never been embarrassed about having streaks in my drawers. You know, it happens.",
+                author: "Ted Lasso"
+            },
+            {
+                text: "If the Tin Man has no heart, the Scarecrow no brain, and the Lion no courage, how in the world did they become best friends?",
+                author: "Ted Lasso"
+            },
+            {
+                text: "I feel like we fell out of the lucky tree and hit every branch on the way down.",
+                author: "Ted Lasso"
+            }
+        ];
+
+        // Function to display a random quote
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quoteElement = document.getElementById('quote');
+            const authorElement = document.getElementById('author');
+            
+            quoteElement.textContent = `"${quotes[randomIndex].text}"`;
+            authorElement.textContent = quotes[randomIndex].author;
+        }
+
+        // Display a quote when the page loads
+        window.onload = displayRandomQuote;
+
+        // Display a new quote when the button is clicked
+        document.getElementById('new-quote').addEventListener('click', displayRandomQuote);
+
+        // Send height to parent (Notion) for proper sizing
+        function updateHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ type: 'resize', height }, '*');
+        }
+        
+        window.onload = function() {
+            displayRandomQuote();
+            updateHeight();
+        };
+        
+        window.addEventListener('resize', updateHeight);
+    </script>
+</body>
+</html>
